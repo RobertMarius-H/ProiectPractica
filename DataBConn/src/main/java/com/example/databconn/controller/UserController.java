@@ -1,12 +1,11 @@
 package com.example.databconn.controller;
+
 import com.example.databconn.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
+
 @RestController
-
-
 public class UserController {
 
     private final UserService userService = new UserService();
@@ -20,9 +19,8 @@ public class UserController {
         }
     }
 
-    //
-//
-
-
+    @DeleteMapping("/users")
+    public void deleteUser(@RequestParam("id") Integer id) {
+        userService.deleteUserById(id);
+    }
 }
-

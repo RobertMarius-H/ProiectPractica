@@ -24,5 +24,15 @@ public class UserRepository {
             statement.executeUpdate();
         }
     }
-    //
+
+    public void deleteById(Integer id) throws SQLException {
+        String query = "DELETE FROM Persoane WHERE ID_Pers = ?";
+
+        try (Connection connection = DatabaseConfig.getConnection();
+             PreparedStatement statement = connection.prepareStatement(query)) {
+
+            statement.setInt(1, id);
+            statement.executeUpdate();
+        }
+    }
 }

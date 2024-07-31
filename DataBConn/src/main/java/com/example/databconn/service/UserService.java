@@ -79,6 +79,15 @@ public class UserService {
             logger.error("Error while saving user", e);
         }
     }
-//
+
+    public void updateUser(User user) {
+        try {
+            userRepository.update(user);
+        } catch (SQLException e) {
+            logger.error("Error while updating user", e);
+        }
+    }
+
+
 
 }

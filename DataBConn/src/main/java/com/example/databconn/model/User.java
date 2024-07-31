@@ -10,6 +10,7 @@ public class User {
 
     // Getters and setters
 
+
     public Integer getIdPers() {
         return idPers;
     }
@@ -57,5 +58,5 @@ public class User {
     public void setIdOrasDomiciliu(Integer idOrasDomiciliu) {
         this.idOrasDomiciliu = idOrasDomiciliu;
     }
-
+//
 }

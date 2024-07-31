@@ -88,8 +88,6 @@ public class UserService {
         }
     }
 
-
-
     // Metodă pentru a șterge un utilizator după ID
     public void deleteUserById(Integer id) {
         try {

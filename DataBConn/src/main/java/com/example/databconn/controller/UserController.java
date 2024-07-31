@@ -26,7 +26,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("/users")
+    @DeleteMapping("/delete")
     public void deleteUser(@RequestParam("id") Integer id) {
         userService.deleteUserById(id);
     }
@@ -42,8 +42,6 @@ public class UserController {
         userService.updateUser(user);
         return "Updated...";
     }
-
-
 
 
 }

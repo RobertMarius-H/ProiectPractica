@@ -42,7 +42,6 @@ public class UserRepository {
         }
     }
 
-    //
 
     public void deleteById(Integer id) throws SQLException {
         String query = "DELETE FROM Persoane WHERE ID_Pers = ?";

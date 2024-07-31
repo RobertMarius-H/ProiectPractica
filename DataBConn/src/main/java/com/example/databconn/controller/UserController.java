@@ -1,15 +1,17 @@
 package com.example.databconn.controller;
 import com.example.databconn.UserRepo.UserRepository;
 import com.example.databconn.model.User;
+import com.example.databconn.UserRepo.UserRepository;
+import com.example.databconn.model.User;
+
+import com.example.databconn.model.User;
 import com.example.databconn.service.UserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
+
 @RestController
-
-
 public class UserController {
 
     private final UserService userService = new UserService();
@@ -24,6 +26,10 @@ public class UserController {
         }
     }
 
+    @DeleteMapping("/users")
+    public void deleteUser(@RequestParam("id") Integer id) {
+        userService.deleteUserById(id);
+    }
 
     @PostMapping("/save")
     public String saveUser(@RequestBody User user) {
@@ -41,4 +47,3 @@ public class UserController {
 
 
 }
-

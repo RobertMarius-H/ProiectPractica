@@ -90,4 +90,12 @@ public class UserService {
 
 
 
+    // Metodă pentru a șterge un utilizator după ID
+    public void deleteUserById(Integer id) {
+        try {
+            userRepository.deleteById(id);
+        } catch (SQLException e) {
+            logger.error("Error while deleting user with ID: {}", id, e);
+        }
+    }
 }

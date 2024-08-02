@@ -2,11 +2,13 @@ package com.example.databconn.UserRepo;
 
 import com.example.databconn.config.DatabaseConfig;
 import com.example.databconn.model.User;
+import org.springframework.stereotype.Repository;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+@Repository
 public class UserRepository {
 
     public void save(User user) throws SQLException {

@@ -7,6 +7,7 @@ import com.example.databconn.model.User;
 import com.example.databconn.model.User;
 import com.example.databconn.service.UserService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,6 +43,8 @@ public class UserController {
         userService.updateUser(user);
         return "Updated...";
     }
+
+
 
 
 }

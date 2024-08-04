@@ -1,0 +1,27 @@
+#tabelPersoane th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+#tabelPersoane {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tabelPersoane td, #customers th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tabelPersoane tr:nth-child(even){background-color: #f2f2f2;}
+
+#tabelPersoane tr:hover {background-color: #ddd;}
+
+#tabelPersoane th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+}

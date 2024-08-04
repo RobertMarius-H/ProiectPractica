@@ -5,6 +5,7 @@ import com.example.databconn.config.DatabaseConfig;
 import com.example.databconn.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,6 +14,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+@Service
 public class UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository = new UserRepository();
@@ -77,6 +79,14 @@ public class UserService {
             userRepository.save(user);
         } catch (SQLException e) {
             logger.error("Error while saving user", e);
+        }
+    }
+
+    public void updateUser(User user) {
+        try {
+            userRepository.update(user);
+        } catch (SQLException e) {
+            logger.error("Error while updating user", e);
         }
     }
 

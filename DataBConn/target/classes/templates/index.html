@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>MyDB</title>
+    <link rel = "stylesheet" href = "/Style.css">
+
+</head>
+<body>
+
+<nav>
+        <div class = "logo">MyDB</div>
+        <div class = "nav-items">
+            <a href="/">Home</a>
+            <a href="/">Insert</a>
+            <a href="/">Update</a>
+            <a href="/">Delete</a>
+        </div>
+</nav>
+
+
+
+<div>
+    <table id="tabelPersoane">
+        <thead>
+        <tr>
+            <th>ID_PERSOANE</th>
+            <th>Nume</th>
+            <th>Prenume</th>
+            <th>AnNastere</th>
+            <th>ID_Ocupatie</th>
+            <th>ID_Oras_Domiciliu</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.idPers}"></td>
+            <td th:text="${user.nume}"></td>
+            <td th:text="${user.prenume}"></td>
+            <td th:text="${user.anNastere}"></td>
+            <td th:text="${user.idOcupatie}"></td>
+            <td th:text="${user.idOrasDomiciliu}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+
+</body>
+</html>

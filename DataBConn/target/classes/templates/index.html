@@ -3,22 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <title>MyDB</title>
-    <link rel = "stylesheet" href = "/Style.css">
-
+    <link rel="stylesheet" href="/Style.css">
+    <script src="/Main.js" defer></script>
 </head>
 <body>
-
 <nav>
-        <div class = "logo">MyDB</div>
-        <div class = "nav-items">
-            <a href="/">Home</a>
-            <a href="/">Insert</a>
-            <a href="/">Update</a>
-            <a href="/">Delete</a>
-        </div>
+    <div class="logo">MyDB</div>
+    <div class="nav-items">
+        <a href="#" onclick="showInsertForm(); return false;">Insert</a>
+        <a href="#" onclick="showUpdateForm(); return false;">Update</a>
+        <a href="#" onclick="showDeleteForm(); return false;">Delete</a>
+        <a href="/users-view">Home</a>
+    </div>
 </nav>
 
+<div id="form-container" style="display: none;">
+    <!-- Formularele pentru inserare, actualizare și ștergere -->
+    <div id="insert-form" style="display: none;">
+        <h2>Insert User</h2>
+        <form id="insertUserForm" onsubmit="event.preventDefault(); submitInsertForm();">
+            <label for="nume">Nume:</label>
+            <input type="text" id="nume" name="nume" required><br>
+            <label for="prenume">Prenume:</label>
+            <input type="text" id="prenume" name="prenume" required><br>
+            <label for="anNastere">An Nastere:</label>
+            <input type="number" id="anNastere" name="anNastere" required><br>
+            <label for="idOcupatie">ID Ocupatie:</label>
+            <input type="number" id="idOcupatie" name="idOcupatie" required><br>
+            <label for="idOrasDomiciliu">ID Oras Domiciliu:</label>
+            <input type="number" id="idOrasDomiciliu" name="idOrasDomiciliu" required><br>
+            <button type="submit">Insert</button>
+        </form>
+    </div>
 
+    <div id="update-form" style="display: none;">
+        <h2>Update User</h2>
+        <form id="updateUserForm" onsubmit="event.preventDefault(); submitUpdateForm();">
+            <label for="idPers">ID Pers:</label>
+            <input type="number" id="idPers" name="idPers" required><br>
+            <label for="numeUpdate">Nume:</label>
+            <input type="text" id="numeUpdate" name="nume" required><br>
+            <label for="prenumeUpdate">Prenume:</label>
+            <input type="text" id="prenumeUpdate" name="prenume" required><br>
+            <label for="anNastereUpdate">An Nastere:</label>
+            <input type="number" id="anNastereUpdate" name="anNastere" required><br>
+            <label for="idOcupatieUpdate">ID Ocupatie:</label>
+            <input type="number" id="idOcupatieUpdate" name="idOcupatie" required><br>
+            <label for="idOrasDomiciliuUpdate">ID Oras Domiciliu:</label>
+            <input type="number" id="idOrasDomiciliuUpdate" name="idOrasDomiciliu" required><br>
+            <button type="submit">Update</button>
+        </form>
+    </div>
+
+    <div id="delete-form" style="display: none;">
+        <h2>Delete User</h2>
+        <form id="deleteForm" onsubmit="event.preventDefault(); submitDeleteForm();">
+            <label for="deleteId">ID Pers:</label>
+            <input type="number" id="deleteId" name="deleteId" required><br>
+            <button type="submit">Delete</button>
+        </form>
+    </div>
+</div>
 
 <div>
     <table id="tabelPersoane">
@@ -33,6 +78,7 @@
         </tr>
         </thead>
         <tbody>
+        <!-- Aceste rânduri vor fi populate de Thymeleaf -->
         <tr th:each="user : ${users}">
             <td th:text="${user.idPers}"></td>
             <td th:text="${user.nume}"></td>
@@ -44,7 +90,5 @@
         </tbody>
     </table>
 </div>
-
-
 </body>
 </html>

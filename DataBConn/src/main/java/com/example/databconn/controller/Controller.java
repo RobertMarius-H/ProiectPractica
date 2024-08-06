@@ -15,7 +15,7 @@ public class Controller {
 
     @RequestMapping("/home")
     public String test(){
-        return "index";
+        return "login";
     }
 
     @RequestMapping("/users-view")

@@ -87,3 +87,4 @@ function submitDeleteForm() {
         })
         .catch(error => console.error('Error:', error));
 }
+

@@ -5,7 +5,6 @@ import com.example.databconn.model.User;
 import com.example.databconn.service.UserService;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -25,4 +24,16 @@ public class Controller {
         model.addAttribute("users", users);
         return "index";
     }
+
+    /*
+
+    FOLOSITA CA SA TESTEZ NOUA PAGINA HTML
+
+    @RequestMapping("/users-pagina")
+    public String pagina(Model model) {
+        List<User> users = userService.getAllUsers();
+        model.addAttribute("users", users);
+        return "primaPagina";
+    }
+    */
 }

@@ -7,7 +7,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.sql.SQLException;
-import java.util.Optional;
 
 @Service
 public class UserLoginService {
@@ -18,7 +17,7 @@ public class UserLoginService {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public UserLogin registerUser(String username, String password) throws SQLException {
+    public UserLogin registerUser(String username, String password, String email) throws SQLException {
         if (userLoginRepository.findByUsername(username) != null) {
             throw new RuntimeException("User already exists");
         }
@@ -26,6 +25,9 @@ public class UserLoginService {
         UserLogin newUser = new UserLogin();
         newUser.setUsername(username);
         newUser.setPassword(passwordEncoder.encode(password));
+        newUser.setStatus("user");
+        newUser.setEmail(email);
+
         userLoginRepository.save(newUser);
         return newUser;
     }

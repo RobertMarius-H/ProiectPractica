@@ -52,9 +52,9 @@ public class UserController {
     private UserLoginService userLoginService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestParam String username, @RequestParam String password) {
+    public ResponseEntity<String> registerUser(@RequestParam String username, @RequestParam String password , @RequestParam String email) {
         try {
-            UserLogin user = userLoginService.registerUser(username, password);
+            UserLogin user = userLoginService.registerUser(username, password, email);
             return ResponseEntity.ok("User registered successfully with ID: " + user.getId());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());

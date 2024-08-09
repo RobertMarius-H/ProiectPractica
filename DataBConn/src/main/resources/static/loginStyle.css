@@ -88,3 +88,13 @@ body{
     font-weight: 600;
     color:white;
 }
+.small-btn {
+    width: 100px; /* Dimensiunea butonului redusă */
+    height: 30px;
+    margin-top: 20px;
+    font-size: 14px;
+    padding: 5px 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

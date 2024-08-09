@@ -1,39 +1,22 @@
 document.addEventListener("DOMContentLoaded", function() {
-    document.getElementById('form-container').style.display = 'none';
+    document.getElementById('register-form').style.display = 'none'; // Ascunde formularul de înregistrare inițial
 });
 
-function showInsertForm() {
-    document.getElementById('form-container').style.display = 'block';
-    document.getElementById('insert-form').style.display = 'block';
-    document.getElementById('update-form').style.display = 'none';
-    document.getElementById('delete-form').style.display = 'none';
+function showRegisterForm() {
+    document.getElementById('register-form').style.display = 'block'; // Afișează formularul de înregistrare
+    document.getElementById('loginForm').style.display = 'none'; // Ascunde formularul de login
 }
 
-function showUpdateForm() {
-    document.getElementById('form-container').style.display = 'block';
-    document.getElementById('insert-form').style.display = 'none';
-    document.getElementById('update-form').style.display = 'block';
-    document.getElementById('delete-form').style.display = 'none';
-}
-
-function showDeleteForm() {
-    document.getElementById('form-container').style.display = 'block';
-    document.getElementById('insert-form').style.display = 'none';
-    document.getElementById('update-form').style.display = 'none';
-    document.getElementById('delete-form').style.display = 'block';
-}
-
-function submitInsertForm() {
-    const form = document.getElementById('insertUserForm');
+function submitRegisterForm() {
+    const form = document.getElementById('registerUserForm');
     const data = {
-        nume: form.nume.value,
-        prenume: form.prenume.value,
-        anNastere: parseInt(form.anNastere.value),
-        idOcupatie: parseInt(form.idOcupatie.value),
-        idOrasDomiciliu: parseInt(form.idOrasDomiciliu.value)
+        username: form.username.value,
+        email: form.email.value,
+        password: form.password.value,
+        confirmPassword: form.confirmPassword.value
     };
 
-    fetch('/api/save', {
+    fetch('/api/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -43,48 +26,13 @@ function submitInsertForm() {
         .then(response => response.text())
         .then(data => {
             alert(data);
-            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('register-form').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'block'; // Reafișează formularul de login
         })
         .catch(error => console.error('Error:', error));
 }
 
-function submitUpdateForm() {
-    const form = document.getElementById('updateUserForm');
-    const data = {
-        idPers: parseInt(form.idPers.value),
-        nume: form.nume.value,
-        prenume: form.prenume.value,
-        anNastere: parseInt(form.anNastere.value),
-        idOcupatie: parseInt(form.idOcupatie.value),
-        idOrasDomiciliu: parseInt(form.idOrasDomiciliu.value)
-    };
-
-    fetch('/api/update', {
-        method: 'PUT',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(data)
-    })
-        .then(response => response.text())
-        .then(data => {
-            alert(data);
-            document.getElementById('form-container').style.display = 'none';
-        })
-        .catch(error => console.error('Error:', error));
+function returnToLogin() {
+    document.getElementById('register-form').style.display = 'none'; // Ascunde formularul de înregistrare
+    document.getElementById('loginForm').style.display = 'block'; // Reafișează formularul de login
 }
-
-function submitDeleteForm() {
-    const id = document.getElementById('deleteId').value;
-
-    fetch(`/api/delete?id=${id}`, {
-        method: 'DELETE'
-    })
-        .then(response => response.text())
-        .then(data => {
-            alert(data);
-            document.getElementById('form-container').style.display = 'none';
-        })
-        .catch(error => console.error('Error:', error));
-}
-

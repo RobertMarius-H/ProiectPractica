@@ -2,37 +2,59 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Welcome to MYDB</title>
+    <title>Welcome to MyDB</title>
     <link rel="stylesheet" href="loginStyle.css">
     <script src="/Main.js" defer></script>
-
 </head>
 <body>
 
-    <div class="wrapper">
-        <div class="logo">
-            <label>MyDB</label>
+<div class="wrapper">
+    <div class="logo">
+        <label>MyDB</label>
+    </div>
+
+    <!-- Formularul de login -->
+    <form id="loginForm" action="" onsubmit="event.preventDefault();">
+        <h1>Login</h1>
+
+        <div class="input-box">
+            <input type="text" id="loginUsername" placeholder="Username" required>
         </div>
-        <form action = "">
-            <h1>Login</h1>
 
+        <div class="input-box">
+            <input type="password" id="loginPassword" placeholder="Password" required>
+        </div>
+
+        <div class="remeber-forgot">
+            <label><input type="checkbox"> Remember Me</label>
+        </div>
+        <button type="submit" class="btn">Login</button>
+        <div class="register-link">
+            Not Registered? <a href="#" onclick="showRegisterForm(); return false;">Register</a>
+        </div>
+    </form>
+
+    <!-- Formularul de înregistrare -->
+    <div id="register-form" style="display: none;">
+        <h2>Register</h2>
+        <form id="registerUserForm" onsubmit="event.preventDefault(); submitRegisterForm();">
             <div class="input-box">
-                <input type = "text" placeholder="Username" required>
+                <input type="text" id="username" name="username" required placeholder="Username"><br>
             </div>
-
             <div class="input-box">
-                <input type = "text" placeholder="Password" required>
+                <input type="email" id="email" name="email" required placeholder="Email"><br>
             </div>
-            <div class="remeber-forgot">
-                <label><input type = "checkbox"> Remember Me</label>
+            <div class="input-box">
+                <input type="password" id="password" name="password" required placeholder="Password"><br>
             </div>
-            <button type="submit" class="btn">Login</button>
-            <div class="register-link">
-                Not Registered? <a href="#">Register</a>
+            <div class="input-box">
+                <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm Password"><br>
             </div>
-
-
+            <button type="submit" class="btn">Register</button>
+            <!-- Butonul pentru întoarcere la login -->
+            <button class="btn small-btn" onclick="returnToLogin()">Back to Login</button>
         </form>
     </div>
+</div>
 </body>
 </html>

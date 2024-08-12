@@ -99,7 +99,10 @@ public class UserService {
         }
     }
 
-
+    public List<User> filterUsers(Integer id, String nume, String prenume, Integer anNastere, Integer idOcupatie, Integer idOrasDomiciliu) {
+       // System.out.println("checked SERVICE");
+        return userRepository.filterUsers(id, nume, prenume, anNastere, idOcupatie, idOrasDomiciliu);
+    }
 
 }
 

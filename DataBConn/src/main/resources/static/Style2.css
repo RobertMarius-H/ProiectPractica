@@ -72,9 +72,28 @@ body{
     margin: 200px 200px 20px 50px;
 }
 
+.table-container::-webkit-scrollbar-track{
+    background:#f9fff8;
+    border-radius: 0px 20px 20px 0px;
+}
+
+.table-container::-webkit-scrollbar{
+    width:20px;
+    height:20px;
+}
+
+.table-container::-webkit-scrollbar-thumb{
+    border-radius: 0px 20px 20px 0px;
+    background-color: #ddd;
+    visibility: visible;
+}
+
+.table-container:hover::-webkit-scrollbar-thumb{
+    background:#929792;
+}
+
 /*table style*/
 #tabelPersoane{
-
     border-collapse: collapse;
     font-size: 2em;
     min-width: 400px;
@@ -103,20 +122,6 @@ body{
 
 #tabelPersoane tr:nth-child(even){background-color: #dcdada;}
 
-#tabelPersoane::-webkit-scrollbar{
-    width:0.5rem;
-    height:0.5rem;
-}
-
-#tabelPersoane::-webkit-scrollbar-thumb{
-    border-radius: 0.5rem;
-    background-color: #ddd;
-    visibility: hidden;
-}
-
-#tabelPersoane:hover::-webkit-scrollbar-thumb{
-    visibility: visible;
-}
 
 #form-container {
     margin: 200px 0px 0px 0px;
@@ -143,6 +148,13 @@ body{
 }
 /*DElETE FORM*/
 #deleteForm{
+    width:300px;
+    background: rgb(0, 191, 255);
+    border-radius: 20px;
+    padding: 20px 20px 20px 20px;
+}
+/*SEARCH FORM*/
+#searchUserForm{
     width:300px;
     background: rgb(0, 191, 255);
     border-radius: 20px;

@@ -7,6 +7,7 @@ function showInsertForm() {
     document.getElementById('insert-form').style.display = 'block';
     document.getElementById('update-form').style.display = 'none';
     document.getElementById('delete-form').style.display = 'none';
+    document.getElementById('search-form').style.display = 'none';
 }
 
 function showUpdateForm() {
@@ -14,6 +15,7 @@ function showUpdateForm() {
     document.getElementById('insert-form').style.display = 'none';
     document.getElementById('update-form').style.display = 'block';
     document.getElementById('delete-form').style.display = 'none';
+    document.getElementById('search-form').style.display = 'none';
 }
 
 function showDeleteForm() {
@@ -21,6 +23,15 @@ function showDeleteForm() {
     document.getElementById('insert-form').style.display = 'none';
     document.getElementById('update-form').style.display = 'none';
     document.getElementById('delete-form').style.display = 'block';
+    document.getElementById('search-form').style.display = 'none';
+}
+
+function showSearchForm(){
+    document.getElementById('form-container').style.display = 'block';
+    document.getElementById('insert-form').style.display = 'none';
+    document.getElementById('update-form').style.display = 'none';
+    document.getElementById('delete-form').style.display = 'none';
+    document.getElementById('search-form').style.display = 'block';
 }
 
 function submitInsertForm() {
@@ -168,4 +179,35 @@ function submitLoginForm() {
         });
 }
 
+function submitSearchForm() {
+    let id = document.getElementById('idSearch').value;
+    let nume = document.getElementById('numeSearch').value;
+    let prenume = document.getElementById('prenumeSearch').value;
+    let anNastere = document.getElementById('anNastereSearch').value;
+    let idOcupatie = document.getElementById('idOcupatieSearch').value;
+    let idOrasDomiciliu = document.getElementById('idOrasDomiciliuSearch').value;
+
+    let url = `/api/filter?id=${id}&nume=${nume}&prenume=${prenume}&anNastere=${anNastere}&idOcupatie=${idOcupatie}&idOrasDomiciliu=${idOrasDomiciliu}`;
+
+    fetch(url)
+        .then(response => response.json())
+        .then(users => updateTable(users))
+        .catch(error => console.error('Error:', error));
+}
+
+function updateTable(users) {
+    let tableBody = document.getElementById('tabelPersoane').getElementsByTagName('tbody')[0];
+    tableBody.innerHTML = ''; // Golește conținutul tabelului
+
+    users.forEach(user => {
+        let row = tableBody.insertRow();
+
+        row.insertCell(0).innerText = user.idPers;
+        row.insertCell(1).innerText = user.nume;
+        row.insertCell(2).innerText = user.prenume;
+        row.insertCell(3).innerText = user.anNastere;
+        row.insertCell(4).innerText = user.idOcupatie;
+        row.insertCell(5).innerText = user.idOrasDomiciliu;
+    });
+}
 

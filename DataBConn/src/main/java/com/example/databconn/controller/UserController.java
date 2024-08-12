@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.SQLException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -76,6 +77,18 @@ public class UserController {
         }
     }
 
+    @GetMapping("/filter")
+    public ResponseEntity<List<User>> filterUsers(
+            @RequestParam(required = false) Integer id,
+            @RequestParam(required = false) String nume,
+            @RequestParam(required = false) String prenume,
+            @RequestParam(required = false) Integer anNastere,
+            @RequestParam(required = false) Integer idOcupatie,
+            @RequestParam(required = false) Integer idOrasDomiciliu) {
+       // System.out.println("checked CONTROLLER");
+        List<User> users = userService.filterUsers(id, nume, prenume, anNastere, idOcupatie, idOrasDomiciliu);
+        return ResponseEntity.ok(users);
+    }
 
 }
 

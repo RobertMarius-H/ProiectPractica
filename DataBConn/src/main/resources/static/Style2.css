@@ -63,13 +63,22 @@ body{
     display:inline-flex;
     justify-content: flex-start;
 }
-#tabelPersoane{
+
+/*Scrollable Table*/
+.table-container{
+    height: 500px;
+    overflow-x: auto;
+    border-radius: 20px 20px 20px 20px;
     margin: 200px 200px 20px 50px;
+}
+
+/*table style*/
+#tabelPersoane{
+
     border-collapse: collapse;
     font-size: 2em;
     min-width: 400px;
-    border-radius: 20px 20px 20px 20px;
-    overflow: hidden;
+    overflow: auto;
     box-shadow: 0 0 10px;
 }
 
@@ -78,6 +87,8 @@ body{
     color:white;
     text-align: left;
     font-weight: bold;
+    position:sticky;
+    top:0;
 }
 
 #tabelPersoane th,
@@ -92,6 +103,20 @@ body{
 
 #tabelPersoane tr:nth-child(even){background-color: #dcdada;}
 
+#tabelPersoane::-webkit-scrollbar{
+    width:0.5rem;
+    height:0.5rem;
+}
+
+#tabelPersoane::-webkit-scrollbar-thumb{
+    border-radius: 0.5rem;
+    background-color: #ddd;
+    visibility: hidden;
+}
+
+#tabelPersoane:hover::-webkit-scrollbar-thumb{
+    visibility: visible;
+}
 
 #form-container {
     margin: 200px 0px 0px 0px;

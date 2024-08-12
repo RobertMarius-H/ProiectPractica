@@ -52,9 +52,9 @@ public class UserController {
     private UserLoginService userLoginService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> registerUser(@RequestParam String username, @RequestParam String password , @RequestParam String email) {
+    public ResponseEntity<String> registerUser(@RequestBody UserLogin userLogin) {
         try {
-            UserLogin user = userLoginService.registerUser(username, password, email);
+            UserLogin user = userLoginService.registerUser(userLogin.getUsername(), userLogin.getPassword(), userLogin.getEmail());
             return ResponseEntity.ok("User registered successfully with ID: " + user.getId());
         } catch (RuntimeException e) {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
@@ -64,15 +64,15 @@ public class UserController {
     }
 
     @PostMapping("/login")
-    public String loginUser(@RequestParam String username, @RequestParam String password) {
-        try {
-            if (userLoginService.authenticateUser(username, password)) {
-                return "Login successful";
+    public ResponseEntity<String> loginUser(@RequestBody UserLogin userLogin) {
+        try{
+            if (userLoginService.authenticateUser(userLogin.getUsername(), userLogin.getPassword())) {
+                return ResponseEntity.ok("Login successful");
             } else {
-                return "Invalid username or password";
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid username or password");
             }
         } catch (SQLException e) {
-            return "Database error: " + e.getMessage();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Database error: " + e.getMessage());
         }
     }
 

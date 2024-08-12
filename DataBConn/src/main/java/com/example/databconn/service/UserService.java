@@ -6,7 +6,6 @@ import com.example.databconn.model.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -16,6 +15,7 @@ import java.util.List;
 
 @Service
 public class UserService {
+
     private static final Logger logger = LoggerFactory.getLogger(UserService.class);
     private final UserRepository userRepository = new UserRepository();
 
@@ -98,5 +98,11 @@ public class UserService {
             logger.error("Error while deleting user with ID: {}", id, e);
         }
     }
+
+    public List<User> filterUsers(Integer id, String nume, String prenume, Integer anNastere, Integer idOcupatie, Integer idOrasDomiciliu) {
+       // System.out.println("checked SERVICE");
+        return userRepository.filterUsers(id, nume, prenume, anNastere, idOcupatie, idOrasDomiciliu);
+    }
+
 }
 
